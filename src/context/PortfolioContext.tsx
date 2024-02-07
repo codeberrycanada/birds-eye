@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { getCurrentHoldingValues } from '../utils/portfolioCalculations';
 import initialPortfolioData from '../data/holdings';
-import { Holding, PortfolioContextType } from './types'; // Assuming types.ts is in the same directory
+import { Holding, PortfolioContextType } from './types';
 
 export const PortfolioContext = createContext<PortfolioContextType>({ holdings: [] });
 
