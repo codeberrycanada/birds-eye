@@ -14,16 +14,17 @@ function getClosestMarketOpenDay(dateString) {
     return `${year}-${month}-${day}`;
 }
 
-export const fetchHistoricalStockPrice = async (symbol, date)  => {
-    const purchaseDate = getClosestMarketOpenDay(date);
-    const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${purchaseDate}&to=${purchaseDate}&apikey=${apiKey}`;
+export const fetchHistoricalStockPrice = async (symbol, startDate, endDate)  => {
+    const start = getClosestMarketOpenDay(startDate);
+    const end = getClosestMarketOpenDay(endDate);
+    const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${start}&to=${end}&apikey=${apiKey}`;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
         if(data.historical && data.historical.length > 0) {
-            const priceDetails = data.historical[0];
-            console.log(priceDetails);
+            // const priceDetails = data.historical[0];
+            // console.log(priceDetails);
         } else {
             console.log('No data found on the specified date');
         }

@@ -4,6 +4,7 @@ interface PortfolioValueProps {
     currentValue: number;
 }
 
+
 const PortfolioValue: React.FC<PortfolioValueProps> = ({currentValue}) => {
     return (
         <div className="flex flex-col gap-1 mb-3 items-center">

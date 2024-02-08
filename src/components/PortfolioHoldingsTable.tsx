@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PortfolioContext } from '../context/PortfolioContext';
 
-const PortfolioHoldings: React.FC = () => {
+const PortfolioHoldingsTable: React.FC = () => {
     const { holdings } = useContext(PortfolioContext);
 
     console.log(holdings);
@@ -20,4 +20,4 @@ const PortfolioHoldings: React.FC = () => {
     )
 }
 
-export default PortfolioHoldings;
+export default PortfolioHoldingsTable;
