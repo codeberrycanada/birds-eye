@@ -6,12 +6,12 @@ interface PortfolioValueProps {
 
 const PortfolioValue: React.FC<PortfolioValueProps> = ({currentValue}) => {
     return (
-        <div id="portfolioValue">
-            <p id="total-value" className="text-4xl text-white">
+        <div className="flex flex-col gap-1 mb-3 items-center">
+            <p id="total-value" className="text-4xl font-extrabold text-almost-white">
                 {currencyFormatter.format(currentValue)}
             </p>
 
-            <label className="text-almost-white" htmlFor="total-value">Total Holdings Value</label>
+            <label className="text-almost-white text-xs uppercase" htmlFor="total-value">Total Value</label>
         </div>
     );
 }

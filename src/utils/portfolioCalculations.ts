@@ -35,9 +35,9 @@ export const getCurrentPortfolioValue = (portfolioData: Holding[]): number => {
     return currentValue;
 };
 
-export function calculatePercentageDifference(x : number, y : number) {
-    const difference = Math.abs(x - y);
-    const average = (x + y) / 2;
+export function calculatePercentageDifference(x: number, y: number): number {
+    const difference = y - x;
+    const average = (Math.abs(x) + Math.abs(y)) / 2;
     const percentageDifference = (difference / average) * 100;
     return percentageDifference;
 }

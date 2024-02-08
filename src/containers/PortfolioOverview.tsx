@@ -11,8 +11,8 @@ const PortfolioOverview: React.FC = () => {
 
     return (
         <div className="dashboard-item">
-            <h2 className="text-xl text-white text-bold mb-1">Portfolio Overview</h2>
-            <div id="portfolioOverview" className="p-6 bg-slate-950">
+            <h2 className="text-md text-white font-medium text-bold mb-1">Portfolio Overview</h2>
+            <div id="portfolioOverview" className="p-6 bg-slate-950 rounded-lg drop-shadow-lg">
                 <PortfolioValue currentValue={currentValue}></PortfolioValue>
                 <PortfolioPerformance initialValue={initialValue} currentValue={currentValue}></PortfolioPerformance>
             </div>
