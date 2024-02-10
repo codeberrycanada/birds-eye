@@ -4,6 +4,6 @@
 
 @layer components {
     .dashboard-item-wrapper {
-        @apply p-6 bg-slate-950 rounded-lg drop-shadow-lg;
+        @apply p-6 bg-slate-100 dark:bg-slate-950 rounded-lg drop-shadow-sm dark:drop-shadow-lg;
     }
 }

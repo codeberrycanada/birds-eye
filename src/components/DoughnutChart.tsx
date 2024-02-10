@@ -46,7 +46,7 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data }) => {
     
     return (
         <div style={{ maxHeight: '150px', maxWidth: '300px'}}>
-            <Doughnut data={chartData} options={options} />;
+            <Doughnut data={chartData} options={options} />
         </div>
     )
 }

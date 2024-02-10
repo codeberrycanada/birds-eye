@@ -67,7 +67,7 @@ export const SortableTable: React.FC = () => {
                         <thead>
                             <tr>
                             {TABLE_HEAD.map((head) => (
-                                <th key={head} className="border-y border-slate-800 py-3 px-2" onClick={() => sortData(head)}>
+                                <th key={head} className="border-y border-slate-800 py-3 px-2 cursor-pointer hover:bg-slate-900" onClick={() => sortData(head)}>
                                     <Typography variant="small" color="blue-gray" className="flex items-center justify-between gap-2 dark:text-almost-white">
                                         {head} <ChevronUpDownIcon strokeWidth={2} className="h-4 w-4 dark:text-slate-600" />
                                     </Typography>

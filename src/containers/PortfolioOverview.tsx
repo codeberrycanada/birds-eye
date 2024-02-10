@@ -12,7 +12,7 @@ const PortfolioOverview: React.FC = () => {
 
     return (
         <div className="dashboard-item">
-            <h2 className="text-md text-white font-medium text-bold mb-1">Portfolio Overview</h2>
+            <h2 className="text-md text-slate dark:text-white font-medium text-bold mb-1">Portfolio Overview</h2>
             <div id="portfolioOverview" className="dashboard-item-wrapper px-9">
                 <PortfolioValue currentValue={currentValue}></PortfolioValue>
                 <div className="flex gap-6 min-w-full justify-center">
