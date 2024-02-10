@@ -5,6 +5,7 @@ export interface Holding {
     numberOfShares: number;
     currentPrice?: number;
     currentValue?: number;
+    change?: number,
     sector: string;
     holdingType: string;
 }

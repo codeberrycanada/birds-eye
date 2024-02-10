@@ -8,7 +8,9 @@ const PortfolioSectors: React.FC = () => {
     return (
         <div className="dashboard-item">
             <h2 className="text-md text-white font-medium text-bold mb-1">Sector Breakdown</h2>
-            <DoughnutChart data={holdings} />
+            <div className="dashboard-item-wrapper">
+                <DoughnutChart data={holdings} />
+            </div>
         </div>
     );
 }

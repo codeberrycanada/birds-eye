@@ -39,8 +39,11 @@ export const fetchCurrentStockPrice = async (symbol) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        if(data[0].price) {
-            return data[0].price;
+        if(data[0].price && data[0].change) {
+            return {
+                price: data[0].price,
+                change: data[0].change,
+            }
         } else {
             console.log('No data found');
         }

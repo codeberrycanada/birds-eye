@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .dashboard-item-wrapper {
+        @apply p-6 bg-slate-950 rounded-lg drop-shadow-lg;
+    }
+}

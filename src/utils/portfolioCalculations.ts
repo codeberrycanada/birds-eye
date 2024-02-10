@@ -3,10 +3,13 @@ import { Holding } from '../context/types';
 
 export const getCurrentHoldingValues = async (portfolioData: Holding[]): Promise<Holding[]> => {
     const updatedHoldingsPromises = portfolioData.map(async (holding) => {
-        const currentPrice = await fetchCurrentStockPrice(holding.symbol);
+        const currentPriceAndChange = await fetchCurrentStockPrice(holding.symbol);
+        const currentPrice = currentPriceAndChange.price;
+        const change = currentPriceAndChange.change;
 
         return {
             ...holding,
+            change,
             currentPrice,
             currentValue: currentPrice * holding.numberOfShares,
         };
@@ -24,6 +27,19 @@ export const getInitialPortfolioValue = (portfolioData: Holding[]): number => {
     }, 0);
 
     return initialValue;
+};
+
+export const getPreviousDayPortfolioChange = (portfolioData: Holding[]): number => {
+    const PreviousDayChange = portfolioData.reduce((accumulator, holding) => {
+        const changePercentage = holding.change ? holding.change / 100 : null;
+        if(changePercentage) {
+            const holdingValue = holding.currentValue ? holding.currentValue * changePercentage : 0;
+            console.log(`current: ${holding.currentValue} change: ${holding.change}`);
+            return accumulator + holdingValue;
+        } return 0;
+    }, 0);
+
+    return PreviousDayChange;
 };
 
 export const getCurrentPortfolioValue = (portfolioData: Holding[]): number => {

@@ -21,16 +21,13 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data }) => {
         {
             data: Object.values(sectorCounts),
             backgroundColor: [
-            'rgba(255, 99, 132, 0.3)',
-            'rgba(54, 162, 235, 0.3)',
-            'rgba(255, 206, 86, 0.3)',
-            'rgba(75, 192, 192, 0.3)',
-            'rgba(153, 102, 255, 0.3)',
-            'rgba(201, 203, 207, 0.3)',
-            'rgba(255, 159, 64, 0.3)',
+                '#047857',
+                '#0f766e',
+                '#0e7490',
+                '#3b82f6',
             ],
             borderColor: [
-                'transparent',
+                '#09090b',
             ],
             borderWidth: 1,
             hoverOffset: 4
@@ -41,14 +38,14 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ data }) => {
     const options = {
         plugins: {
             legend: {
-                position: 'bottom'
+                position: 'right'
             }
         },
         maintainAspectRatio: false
     }
     
     return (
-        <div style={{ maxHeight: '250px', maxWidth: '250px'}}>
+        <div style={{ maxHeight: '150px', maxWidth: '300px'}}>
             <Doughnut data={chartData} options={options} />;
         </div>
     )

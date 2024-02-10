@@ -7,7 +7,7 @@ interface PortfolioValueProps {
 
 const PortfolioValue: React.FC<PortfolioValueProps> = ({currentValue}) => {
     return (
-        <div className="flex flex-col gap-1 mb-3 items-center">
+        <div className="flex flex-col gap-1 mb-4 items-center">
             <p id="total-value" className="text-4xl font-extrabold text-almost-white">
                 {currencyFormatter.format(currentValue)}
             </p>
