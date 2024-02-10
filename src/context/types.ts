@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Holding {
     symbol: string;
     purchaseDate: string;
@@ -12,4 +14,5 @@ export interface Holding {
 
 export interface PortfolioContextType {
     holdings: Holding[];
+    setHoldings: React.Dispatch<React.SetStateAction<Holding[]>>;
 }

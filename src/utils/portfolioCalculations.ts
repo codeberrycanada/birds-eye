@@ -34,7 +34,6 @@ export const getPreviousDayPortfolioChange = (portfolioData: Holding[]): number 
         const changePercentage = holding.change ? holding.change / 100 : null;
         if(changePercentage) {
             const holdingValue = holding.currentValue ? holding.currentValue * changePercentage : 0;
-            console.log(`current: ${holding.currentValue} change: ${holding.change}`);
             return accumulator + holdingValue;
         } return 0;
     }, 0);

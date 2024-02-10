@@ -20,7 +20,7 @@ export const PortfolioProvider: React.FC<{ children: ReactNode }> = ({ children 
     }, []);
 
     return (
-        <PortfolioContext.Provider value={{ holdings }}>
+        <PortfolioContext.Provider value={{ holdings, setHoldings }}>
             {children}
         </PortfolioContext.Provider>
     );
