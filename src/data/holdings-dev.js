@@ -9,6 +9,7 @@ const placeholderData = [
         change: 1.1,
         sector: 'Technology',
         holdingType: 'Stock',
+        totalChangePercentage: 30,
     },
     {
         symbol: 'GOOG',
@@ -20,6 +21,7 @@ const placeholderData = [
         change: 2.34,
         sector: 'Technology',
         holdingType: 'Stock',
+        totalChangePercentage: 32,
     },
     {
         symbol: 'VOO',
@@ -31,6 +33,7 @@ const placeholderData = [
         change: -0.75,
         sector: 'General',
         holdingType: 'ETF',
+        totalChangePercentage: 34,
     },
     {
         symbol: 'SHOP',
@@ -42,6 +45,7 @@ const placeholderData = [
         change: -6.5,
         sector: 'Technology',
         holdingType: 'Stock',
+        totalChangePercentage: 20,
     },
     {
         symbol: 'X',
@@ -53,6 +57,7 @@ const placeholderData = [
         change: 2.42,
         sector: 'Basic Materials',
         holdingType: 'Stock',
+        totalChangePercentage: 50,
     },
     {
         symbol: 'AGI',
@@ -64,6 +69,7 @@ const placeholderData = [
         change: 1.89,
         sector: 'Basic Materials',
         holdingType: 'Stock',
+        totalChangePercentage: 40,
     },
     {
         symbol: 'ENB',
@@ -75,6 +81,7 @@ const placeholderData = [
         change: 0.45,
         sector: 'Energy',
         holdingType: 'Stock',
+        totalChangePercentage: -10,
     }
 ]
 

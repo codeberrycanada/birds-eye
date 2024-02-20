@@ -8,6 +8,7 @@ export interface Holding {
     currentPrice?: number;
     currentValue?: number;
     change?: number,
+    totalChangePercentage?: number,
     sector: string;
     holdingType: string;
 }

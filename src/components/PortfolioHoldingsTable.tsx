@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-import { currencyFormatter } from '../utils/formatting';
+import { currencyFormatter, shortCurrencyFormatter } from '../utils/formatting';
+import { calculatePercentageDifference } from '../utils/portfolioCalculations';
 import { PortfolioContext } from '../context/PortfolioContext';
 import { Holding } from '../context/types';
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/16/solid';
 
-const TABLE_HEAD = ["Symbol", "Shares", "Purchase Price", "Current Price", "Change (1d)", "Holding Gain", "Holding Value", "Sector"];
+const TABLE_HEAD = ["Symbol", "Shares", "Purchase Price", "Current Price", "Change (1d)", "Change (Total)", "Holding Value", "Sector"];
 
 export const SortableTable: React.FC = () => {
     const { holdings } = useContext(PortfolioContext);
@@ -24,7 +25,7 @@ export const SortableTable: React.FC = () => {
         "Purchase Price": "purchasePrice",
         "Current Price": "currentPrice",
         "Change (1d)": "change",
-        "Holding Gain": undefined,
+        "Change (Total)": "totalChangePercentage",
         "Holding Value": "currentValue",
         "Sector": "sector",
     };
@@ -81,20 +82,33 @@ export const SortableTable: React.FC = () => {
                                 <>
                                     {
                                         (() => {
-                                            const PerformanceIcon = holding.change > 0 ? ArrowUpIcon : ArrowDownIcon;
-                                            const performanceIconTextColor = PerformanceIcon === ArrowUpIcon ? 'text-green-600' : 'text-red-900';
-                                            const performanceTextColor = PerformanceIcon === ArrowUpIcon ? 'text-green-400' : 'text-red-600';
+                                            const OneDayPerformanceIcon = holding.change > 0 ? ArrowUpIcon : ArrowDownIcon;
+                                            const oneDayPerformanceIconTextColor = OneDayPerformanceIcon === ArrowUpIcon ? 'text-green-600' : 'text-red-900';
+                                            const oneDayPerformanceTextColor = OneDayPerformanceIcon === ArrowUpIcon ? 'text-green-400' : 'text-red-600';
+
+                                            const TotalPerformanceIcon = holding.totalChangePercentage > 0 ? ArrowUpIcon : ArrowDownIcon;
+                                            const totalPerformanceIconTextColor = TotalPerformanceIcon === ArrowUpIcon ? 'text-green-600' : 'text-red-900';
+                                            const totalPerformanceTextColor = TotalPerformanceIcon === ArrowUpIcon ? 'text-green-400' : 'text-red-600';
+
+                                            // const totalHoldingChange = holding.currentValue - (holding.purchasePrice * holding.numberOfShares);
                                             return (
                                                 <tr key={holding.symbol}>
                                                     <td className="py-3 px-2 dark:text-slate-200 font-bold">{holding.symbol}</td>
                                                     <td className="py-3 px-2 dark:text-slate-300">{holding.numberOfShares}</td>
                                                     <td className="py-3 px-2 dark:text-slate-300">${holding.purchasePrice}</td>
                                                     <td className="py-3 px-2 dark:text-slate-300">${holding.currentPrice}</td>
-                                                    <td className={`py-3 px-2 flex items-center gap-2 ${performanceTextColor}`}>
-                                                        <PerformanceIcon className={`h-5 w-5 ${performanceIconTextColor}`} />
-                                                        {holding.change}%
+                                                    <td className="py-3 px-2">
+                                                        <div className={`flex items-center gap-2 ${oneDayPerformanceTextColor}`}>
+                                                            <OneDayPerformanceIcon className={`h-5 w-5 ${oneDayPerformanceIconTextColor}`} />
+                                                            {holding.change}%
+                                                        </div>
                                                     </td>
-                                                    <td className="py-3 px-2 dark:text-slate-300 font-bold">demo</td>
+                                                    <td className="py-3 px-2">
+                                                        <div className={`flex items-center gap-2 ${totalPerformanceTextColor}`}>
+                                                            <TotalPerformanceIcon className={`h-5 w-5 ${totalPerformanceIconTextColor}`} />
+                                                            {holding.totalChangePercentage?.toFixed(2)}%
+                                                        </div>
+                                                    </td>
                                                     <td className="py-3 px-2 dark:text-slate-300 font-bold">{currencyFormatter.format(holding.currentValue)}</td>
                                                     <td className="py-3 px-2 dark:text-slate-300">{holding.sector}</td>
                                                 </tr>

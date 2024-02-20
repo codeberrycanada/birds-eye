@@ -12,6 +12,7 @@ export const getCurrentHoldingValues = async (portfolioData: Holding[]): Promise
             change,
             currentPrice,
             currentValue: currentPrice * holding.numberOfShares,
+            totalChangePercentage: holding.purchasePrice > 0 ? calculatePercentageDifference(holding.purchasePrice, currentPrice) : 0,
         };
     });
 
@@ -51,9 +52,14 @@ export const getCurrentPortfolioValue = (portfolioData: Holding[]): number => {
 };
 
 export function calculatePercentageDifference(x: number, y: number): number {
+    if (x === 0) {
+        // throw new Error("Initial value x cannot be zero when calculating percentage difference.");
+        console.log("Initial value x cannot be zero when calculating percentage difference.");
+        return 0;
+    }
+
     const difference = y - x;
-    const average = (Math.abs(x) + Math.abs(y)) / 2;
-    const percentageDifference = (difference / average) * 100;
+    const percentageDifference = (difference / x) * 100;
     return percentageDifference;
 }
 
