@@ -78,45 +78,39 @@ export const SortableTable: React.FC = () => {
                         </thead>
 
                         <tbody>
-                            {sortedHoldings.map((holding: Holding) => (
-                                <>
-                                    {
-                                        (() => {
-                                            const OneDayPerformanceIcon = holding.change > 0 ? ArrowUpIcon : ArrowDownIcon;
-                                            const oneDayPerformanceIconTextColor = OneDayPerformanceIcon === ArrowUpIcon ? 'text-green-600' : 'text-red-900';
-                                            const oneDayPerformanceTextColor = OneDayPerformanceIcon === ArrowUpIcon ? 'text-green-400' : 'text-red-600';
+                            {sortedHoldings.map((holding: Holding) => {
+                                const OneDayPerformanceIcon = holding.change > 0 ? ArrowUpIcon : ArrowDownIcon;
+                                const oneDayPerformanceIconTextColor = OneDayPerformanceIcon === ArrowUpIcon ? 'text-green-600' : 'text-red-900';
+                                const oneDayPerformanceTextColor = OneDayPerformanceIcon === ArrowUpIcon ? 'text-green-400' : 'text-red-600';
 
-                                            const TotalPerformanceIcon = holding.totalChangePercentage > 0 ? ArrowUpIcon : ArrowDownIcon;
-                                            const totalPerformanceIconTextColor = TotalPerformanceIcon === ArrowUpIcon ? 'text-green-600' : 'text-red-900';
-                                            const totalPerformanceTextColor = TotalPerformanceIcon === ArrowUpIcon ? 'text-green-400' : 'text-red-600';
+                                const TotalPerformanceIcon = holding.totalChangePercentage > 0 ? ArrowUpIcon : ArrowDownIcon;
+                                const totalPerformanceIconTextColor = TotalPerformanceIcon === ArrowUpIcon ? 'text-green-600' : 'text-red-900';
+                                const totalPerformanceTextColor = TotalPerformanceIcon === ArrowUpIcon ? 'text-green-400' : 'text-red-600';
 
-                                            // const totalHoldingChange = holding.currentValue - (holding.purchasePrice * holding.numberOfShares);
-                                            return (
-                                                <tr key={holding.symbol}>
-                                                    <td className="py-3 px-2 dark:text-slate-200 font-bold">{holding.symbol}</td>
-                                                    <td className="py-3 px-2 dark:text-slate-300">{holding.numberOfShares}</td>
-                                                    <td className="py-3 px-2 dark:text-slate-300">${holding.purchasePrice}</td>
-                                                    <td className="py-3 px-2 dark:text-slate-300">${holding.currentPrice}</td>
-                                                    <td className="py-3 px-2">
-                                                        <div className={`flex items-center gap-2 ${oneDayPerformanceTextColor}`}>
-                                                            <OneDayPerformanceIcon className={`h-5 w-5 ${oneDayPerformanceIconTextColor}`} />
-                                                            {holding.change}%
-                                                        </div>
-                                                    </td>
-                                                    <td className="py-3 px-2">
-                                                        <div className={`flex items-center gap-2 ${totalPerformanceTextColor}`}>
-                                                            <TotalPerformanceIcon className={`h-5 w-5 ${totalPerformanceIconTextColor}`} />
-                                                            {holding.totalChangePercentage?.toFixed(2)}%
-                                                        </div>
-                                                    </td>
-                                                    <td className="py-3 px-2 dark:text-slate-300 font-bold">{currencyFormatter.format(holding.currentValue)}</td>
-                                                    <td className="py-3 px-2 dark:text-slate-300">{holding.sector}</td>
-                                                </tr>
-                                            );
-                                        })()
-                                    }
-                                </>
-                            ))}
+                                // const totalHoldingChange = holding.currentValue - (holding.purchasePrice * holding.numberOfShares);
+                                return (
+                                    <tr key={holding.symbol}>
+                                        <td className="py-3 px-2 dark:text-slate-200 font-bold">{holding.symbol}</td>
+                                        <td className="py-3 px-2 dark:text-slate-300">{holding.numberOfShares}</td>
+                                        <td className="py-3 px-2 dark:text-slate-300">${holding.purchasePrice}</td>
+                                        <td className="py-3 px-2 dark:text-slate-300">${holding.currentPrice}</td>
+                                        <td className="py-3 px-2">
+                                            <div className={`flex items-center gap-2 ${oneDayPerformanceTextColor}`}>
+                                                <OneDayPerformanceIcon className={`h-5 w-5 ${oneDayPerformanceIconTextColor}`} />
+                                                {holding.change}%
+                                            </div>
+                                        </td>
+                                        <td className="py-3 px-2">
+                                            <div className={`flex items-center gap-2 ${totalPerformanceTextColor}`}>
+                                                <TotalPerformanceIcon className={`h-5 w-5 ${totalPerformanceIconTextColor}`} />
+                                                {holding.totalChangePercentage?.toFixed(2)}%
+                                            </div>
+                                        </td>
+                                        <td className="py-3 px-2 dark:text-slate-300 font-bold">{currencyFormatter.format(holding.currentValue)}</td>
+                                        <td className="py-3 px-2 dark:text-slate-300">{holding.sector}</td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </CardBody>

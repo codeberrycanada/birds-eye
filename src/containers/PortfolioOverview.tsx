@@ -11,7 +11,7 @@ const PortfolioOverview: React.FC = () => {
     const currentValue = getCurrentPortfolioValue(holdings);
 
     return (
-        <div className="dashboard-item">
+        <div className="dashboard-item w-2/6">
             <h2 className="text-md text-slate dark:text-white font-medium text-bold mb-1">Portfolio Overview</h2>
             <div id="portfolioOverview" className="dashboard-item-wrapper px-9">
                 <PortfolioValue currentValue={currentValue}></PortfolioValue>
